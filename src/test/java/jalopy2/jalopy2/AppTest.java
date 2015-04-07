@@ -1,5 +1,9 @@
 package jalopy2.jalopy2;
 
+import de.hunsicker.jalopy.Jalopy;
+
+import java.net.URL;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -35,4 +39,14 @@ public class AppTest
     {
         assertTrue( true );
     }
+
+    public void testNoClassDefFoundErrorDeclarationType() throws Exception
+    {
+        URL url = getClass().getResource("jalopy.xml");
+
+        assertNotNull(url);
+
+        Jalopy.setConvention(url);
+    }
+
 }
