@@ -58,7 +58,6 @@ import de.hunsicker.jalopy.storage.History;
 import de.hunsicker.jalopy.storage.Loggers;
 import de.hunsicker.util.Version;
 
-import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.Level;
 import org.apache.log4j.Priority;
 import org.apache.log4j.spi.LoggingEvent;
@@ -234,9 +233,6 @@ public final class Jalopy
     /** Input source reader. */
     private Reader _inputReader;
 
-    /** Appender which <em>spies</em> for logging events. */
-    private final SpyAppender _spy;
-
     /** Run status. */
     State _state = State.UNDEFINED;
 
@@ -306,8 +302,6 @@ public final class Jalopy
         
         _recognizer = new JavaRecognizer(_factory);
         _inspector = new CodeInspector(_issues);
-        _spy = new SpyAppender();
-        Loggers.ALL.addAppender(_spy);
     }
 
     //~ Methods --------------------------------------------------------------------------
@@ -2521,64 +2515,6 @@ public final class Jalopy
         public String toString()
         {
             return this.name;
-        }
-    }
-
-
-    /**
-     * Detects whether and what kind of messages were produced during a run. Updates the
-     * state info accordingly.
-     */
-    private final class SpyAppender
-        extends AppenderSkeleton
-    {
-        public SpyAppender()
-        {
-            this.name = "JalopySpyAppender" /* NOI18N */;
-        }
-
-        public void append(LoggingEvent ev)
-        {
-            switch (ev.getLevel().toInt())
-            {
-                case Priority.WARN_INT :
-
-                    if (_state != State.ERROR)
-                    {
-                        _state = State.WARN;
-                    }
-
-                    break;
-
-                case Priority.ERROR_INT :
-                case Priority.FATAL_INT :
-                    _state = State.ERROR;
-
-                    break;
-            }
-        }
-
-
-        public void close()
-        {
-        }
-
-
-        public synchronized void doAppend(LoggingEvent ev)
-        {
-            append(ev);
-        }
-
-
-        public boolean requiresLayout()
-        {
-            return false;
-        }
-
-
-        protected boolean checkEntryConditions()
-        {
-            return true;
         }
     }
 }
