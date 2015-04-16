@@ -231,8 +231,8 @@ final class ImportTransformation
                 _args[2] = identifier;
                 _args[3] = new Integer(dup.getStartLine());
 
-                Loggers.TRANSFORM.l7dlog(
-                    Level.INFO, "TRANS_IMP_REMOVE_DUPLICATE", _args, null);
+                Loggers.TRANSFORM.info(
+                	Loggers.fmt("TRANS_IMP_REMOVE_DUPLICATE", _args), null);
             }
             else
             {
@@ -257,8 +257,8 @@ final class ImportTransformation
                         ((JavaNode) _singleTypeImports.get(
                             _singleTypeImports.indexOf(importNode))).getStartLine());
 
-                Loggers.TRANSFORM.l7dlog(
-                    Level.INFO, "TRANS_IMP_REMOVE_DUPLICATE", _args, null);
+                Loggers.TRANSFORM.info(
+                	Loggers.fmt("TRANS_IMP_REMOVE_DUPLICATE", _args), null);
             }
             else
             {
@@ -892,8 +892,8 @@ final class ImportTransformation
             _args[1] = new Integer(node.startLine);
             _args[2] = node.text;
 
-            Loggers.TRANSFORM.l7dlog(
-            Level.INFO, "TRANS_IMP_COLLAPSE_SINGLE_TYPE", _args, null);*/
+            Loggers.TRANSFORM.info(
+            Loggers.fmt("TRANS_IMP_COLLAPSE_SINGLE_TYPE", _args), null);*/
         }
 
         newOnDemandImports.addAll(retainedOnDemandImports);
@@ -1025,8 +1025,8 @@ final class ImportTransformation
                 if (showWarnings)
                 {
                     // we couldn't resolve the import, spit out warning
-                    Loggers.TRANSFORM.l7dlog(
-                        Level.WARN, "TRANS_IMP_NOT_POSSIBLE", _args, null);
+                    Loggers.TRANSFORM.warn(
+                    	Loggers.fmt("TRANS_IMP_NOT_POSSIBLE", _args), null);
                 }
             }
 
@@ -1071,8 +1071,8 @@ final class ImportTransformation
 
                 if (showWarnings)
                 {
-                    Loggers.TRANSFORM.l7dlog(
-                        Level.WARN, "TRANS_IMP_NOT_POSSIBLE", _args, null);
+                    Loggers.TRANSFORM.warn(
+                    	Loggers.fmt("TRANS_IMP_NOT_POSSIBLE", _args), null);
                 }
             }
 
@@ -1300,8 +1300,8 @@ CHECK:
                 _args[1] = new Integer(node.getStartLine());
                 _args[2] = node.getText();
 
-                Loggers.TRANSFORM.l7dlog(
-                    Level.INFO, "TRANS_IMP_EXPAND_ON_DEMAND", _args, null);
+                Loggers.TRANSFORM.info(
+                	Loggers.fmt("TRANS_IMP_EXPAND_ON_DEMAND", _args), null);
             }
         }
 
@@ -1339,8 +1339,8 @@ CHECK:
                 _args[1] = new Integer(node.getStartLine());
                 _args[2] = node.getText();
 
-                Loggers.TRANSFORM.l7dlog(
-                    Level.INFO, "TRANS_IMP_REMOVE_OBSOLETE", _args, null);
+                Loggers.TRANSFORM.info(
+                	Loggers.fmt("TRANS_IMP_REMOVE_OBSOLETE", _args), null);
             }
             else
             {
@@ -1395,8 +1395,8 @@ CHECK:
                         _args[1] = new Integer(node.getStartLine());
                         _args[2] = node.getText();
 
-                        Loggers.TRANSFORM.l7dlog(
-                            Level.INFO, "TRANS_IMP_REMOVE_UNUSED", _args, null);
+                        Loggers.TRANSFORM.info(
+                        	Loggers.fmt("TRANS_IMP_REMOVE_UNUSED", _args), null);
                     }
                     else
                     {

@@ -5,6 +5,7 @@ import java.util.Collection;
 import de.hunsicker.jalopy.language.Parser;
 import de.hunsicker.jalopy.language.Recognizer;
 import de.hunsicker.jalopy.language.antlr.*;
+import de.hunsicker.jalopy.storage.Loggers;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.Level;
@@ -24,12 +25,15 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Properties;
+
 import de.hunsicker.util.Lcs;
+
 import java.io.FileInputStream;
 import java.io.File;
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.io.IOException;
+
 import java.net.URL;
 
 
@@ -346,7 +350,7 @@ public class JavadocParser extends InternalJavadocParser implements Parser{
         if (name == null) // invalid tag
         {
             Object[] args = { getFilename(), new Integer(_lexer.getLine()), new Integer(_lexer.getColumn()), text };
-            _logger.l7dlog(Level.ERROR, "TAG_INVALID", args, null);
+            _logger.error(Loggers.fmt("TAG_INVALID", args), null);
         }
         else
         {
@@ -356,7 +360,7 @@ public class JavadocParser extends InternalJavadocParser implements Parser{
                 tag.setText(name);
 
                 Object[] args = { getFilename(), new Integer(_lexer.getLine()), new Integer(_lexer.getColumn()), text, name};
-                _logger.l7dlog(Level.WARN, "TAG_MISSPELLED_NAME", args, null);
+                _logger.warn(Loggers.fmt("TAG_MISSPELLED_NAME", args), null);
             }
 
             String t = (String)_tokenTypes.get(type +
@@ -478,7 +482,7 @@ public class JavadocParser extends InternalJavadocParser implements Parser{
        Integer line = new Integer((recognizer!=null?recognizer.getStartLine():0) +ex.getLine());
        Integer column = new Integer((recognizer!=null?recognizer.getStartColumn():0) +ex.getColumn());
       Object args[] = { getFilename(), line, column, ex.getMessage() };
-      _logger.l7dlog(Level.ERROR, "PARSER_ERROR", args, ex);
+      _logger.error(Loggers.fmt("PARSER_ERROR", args), ex);
    }
 
    /**
@@ -489,7 +493,7 @@ public class JavadocParser extends InternalJavadocParser implements Parser{
    public void reportError(String message)
    {
       Object args[]  = { getFilename(), new Integer(_lexer.getLine()), new Integer(_lexer.getColumn()), message };
-      _logger.l7dlog(Level.ERROR, "PARSER_ERROR", args, null);
+      _logger.error(Loggers.fmt("PARSER_ERROR", args), null);
    }
 
    /**
@@ -500,7 +504,7 @@ public class JavadocParser extends InternalJavadocParser implements Parser{
    public void reportWarning(String message)
    {
       Object args[]  = { getFilename(), new Integer(_lexer.getLine()), new Integer(_lexer.getColumn()), message };
-      _logger.l7dlog(Level.WARN, message, args, null);
+      _logger.warn(Loggers.fmt(message, args), null);
    }
 
     /**

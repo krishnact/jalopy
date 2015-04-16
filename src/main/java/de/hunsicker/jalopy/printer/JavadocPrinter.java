@@ -280,10 +280,10 @@ final class JavadocPrinter extends AbstractPrinter {
 
                 out.print(lines[lines.length - 1], JavadocTokenTypes.JAVADOC_COMMENT);
 
-                Loggers.PRINTER_JAVADOC.l7dlog(
-                    Level.INFO,
+                Loggers.PRINTER_JAVADOC.info(
+                	Loggers.fmt(
                     KEY_GENERATE_COMMENT,
-                    out.state.args,
+                    out.state.args),
                     null);
             } // end if
         } // end if
@@ -603,10 +603,10 @@ LOOP:
                 out.state.args[3] = "@return" /* NOI18N */;
                 out.state.args[4] = new Integer(((Node)returnNode).getStartLine());
                 returnNode = null;
-                Loggers.PRINTER_JAVADOC.l7dlog(
-                    Level.WARN,
+                Loggers.PRINTER_JAVADOC.warn(
+                	Loggers.fmt(
                     KEY_TAG_REMOVE_OBSOLETE,
-                    out.state.args,
+                    out.state.args),
                     null);
             } // end if
         } // end if
@@ -740,10 +740,10 @@ LOOP:
                         out.state.args[4] = new Integer(((Node)tag).getStartLine());
                         out.state.args[5] = tag;
 
-                        Loggers.PRINTER_JAVADOC.l7dlog(
-                            Level.WARN,
+                        Loggers.PRINTER_JAVADOC.warn(
+                        	Loggers.fmt(
                             KEY_TAG_REMOVE_OBSOLETE,
-                            out.state.args,
+                            out.state.args),
                             null);
                     } // end for
 
@@ -801,10 +801,10 @@ LOOP:
                         out.getIndentLength() + asterix.length() + 1);
                     out.state.args[3] = tagName;
                     out.state.args[4] = name;
-                    Loggers.PRINTER_JAVADOC.l7dlog(
-                        Level.WARN,
+                    Loggers.PRINTER_JAVADOC.warn(
+                    	Loggers.fmt(
                         KEY_TAG_ADD_MISSING,
-                        out.state.args,
+                        out.state.args),
                         null);
                 } // end for
             } // end if
@@ -877,9 +877,9 @@ LOOP:
                                   + asterix.length() + 1);
                    out.state.args[3] = name;
                    out.state.args[4] = validName;
-                   Loggers.PRINTER_JAVADOC.l7dlog(Level.WARN,
+                   Loggers.PRINTER_JAVADOC.warn(Loggers.fmt(
                                           KEY_TAG_MISSPELLED_NAME,
-                                          out.state.args, null);
+                                          out.state.args), null);
                    child.setText(SPACE + validName + text.substring(offset));
                    }
                    }*/
@@ -941,10 +941,10 @@ LOOP:
             out.state.args[3] = oldName;
             out.state.args[4] = newName;
 
-            Loggers.PRINTER_JAVADOC.l7dlog(
-                Level.WARN,
+            Loggers.PRINTER_JAVADOC.warn(
+            	Loggers.fmt(
                 KEY_TAG_MISSPELLED_NAME,
-                out.state.args,
+                out.state.args),
                 null);
 
             text = SPACE + newName + text.substring(offset);
@@ -2234,10 +2234,10 @@ SELECTION:
                 out.state.args[2] = new Integer(out.getIndentLength() + asterix.length() + 1);
                 out.state.args[3] = "@return" /* NOI18N */;
                 out.state.args[4] = EMPTY_STRING;
-                Loggers.PRINTER_JAVADOC.l7dlog(
-                    Level.WARN,
+                Loggers.PRINTER_JAVADOC.warn(
+                	Loggers.fmt(
                     KEY_TAG_ADD_MISSING,
-                    out.state.args,
+                    out.state.args),
                     null);
             } // end if
 

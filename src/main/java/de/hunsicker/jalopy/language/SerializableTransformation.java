@@ -89,8 +89,8 @@ final class SerializableTransformation
                     catch (ClassNotFoundException ex)
                     {
                         Object[] args = { tree.getText(), info.name };
-                        Loggers.TRANSFORM.l7dlog(
-                            Level.WARN, "TRANS_SERIALIZABLE_CLASS_NOT_FOUND", args, ex);
+                        Loggers.TRANSFORM.warn(
+                        	Loggers.fmt("TRANS_SERIALIZABLE_CLASS_NOT_FOUND", args), ex);
                     }
                 }
             }
@@ -364,7 +364,7 @@ LOOP:
         }
 
         Object[] args = { tree.getText(), info.name };
-        Loggers.TRANSFORM.l7dlog(Level.INFO, "TRANS_SERIALIZABLE_ADD", args, null);
+        Loggers.TRANSFORM.info(Loggers.fmt("TRANS_SERIALIZABLE_ADD", args), null);
     }
 
     //~ Inner Classes --------------------------------------------------------------------

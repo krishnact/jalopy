@@ -682,7 +682,7 @@ public final class JavaRecognizer extends Recognizer
          catch(TransformationException ex)
          {
             Object[] args = {this.parser.getFilename()};
-            Loggers.IO.l7dlog(Level.ERROR, "TRANS_ERROR", args, ex);
+            Loggers.IO.error(Loggers.fmt("TRANS_ERROR", args), ex);
          }
       }
    }

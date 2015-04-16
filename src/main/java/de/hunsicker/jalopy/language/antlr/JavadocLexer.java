@@ -6,10 +6,13 @@ import de.hunsicker.jalopy.language.Lexer;
 import de.hunsicker.jalopy.language.Parser;
 import de.hunsicker.jalopy.language.Recognizer;
 import de.hunsicker.jalopy.language.antlr.*;
+import de.hunsicker.jalopy.storage.Loggers;
 
 import java.io.Reader;
 import java.io.StringReader;
+
 import de.hunsicker.io.FileFormat;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.Level;
 
@@ -101,7 +104,7 @@ public class JavadocLexer extends InternalJavadocLexer implements Lexer{
         if (this.inputState != null)
         {
             Object[] args = { getFilename(), new Integer(getLine()), new Integer(getColumn()), "JavadocLexer: panic" };
-            _logger.l7dlog(Level.FATAL, "PARSER_ERROR", args, null);
+            _logger.fatal(Loggers.fmt("PARSER_ERROR", args), null);
         }
         else
         {
@@ -109,7 +112,7 @@ public class JavadocLexer extends InternalJavadocLexer implements Lexer{
                 _logger = Logger.getLogger("de.hunsicker.jalopy.language.java");
 
             Object[] args = { "???", new Integer(0), new Integer(0), "JavaLexer: panic" };
-            _logger.l7dlog(Level.FATAL, "PARSER_ERROR", args, null);
+            _logger.fatal(Loggers.fmt("PARSER_ERROR", args), null);
         }
 
     }
@@ -123,7 +126,7 @@ public class JavadocLexer extends InternalJavadocLexer implements Lexer{
         if (this.inputState != null)
         {
             Object[] args = { getFilename(), new Integer(getLine()), new Integer(getColumn()), message };
-            _logger.l7dlog(Level.FATAL, "PARSER_ERROR", args, null);
+            _logger.fatal(Loggers.fmt("PARSER_ERROR", args), null);
         }
         else
         {
@@ -131,7 +134,7 @@ public class JavadocLexer extends InternalJavadocLexer implements Lexer{
                 _logger = Logger.getLogger("de.hunsicker.jalopy.language.java");
 
             Object[] args = { "???", new Integer(0), new Integer(0), message };
-            _logger.l7dlog(Level.FATAL, "PARSER_ERROR", args, null);
+            _logger.fatal(Loggers.fmt("PARSER_ERROR", args), null);
         }
     }
    
@@ -147,7 +150,7 @@ public class JavadocLexer extends InternalJavadocLexer implements Lexer{
        Integer line = new Integer((recognizer!=null?recognizer.getStartLine():0) +getLine());
        Integer column = new Integer((recognizer!=null?recognizer.getStartColumn():0) +getColumn());
       Object args[] = { getFilename(), line, column, ex.getMessage() };
-      _logger.l7dlog(Level.ERROR, "PARSER_ERROR" , args, ex);
+      _logger.error(Loggers.fmt("PARSER_ERROR" , args), ex);
    }
 
    /**
@@ -160,7 +163,7 @@ public class JavadocLexer extends InternalJavadocLexer implements Lexer{
        Integer line = new Integer((recognizer!=null?recognizer.getStartLine():0) +getLine());
        Integer column = new Integer((recognizer!=null?recognizer.getStartColumn():0) +getColumn());
       Object args[] = { getFilename(), line, column, message };
-      _logger.l7dlog(Level.ERROR, "PARSER_ERROR", args, null);
+      _logger.error(Loggers.fmt("PARSER_ERROR", args), null);
    }
 
    /**
@@ -171,7 +174,7 @@ public class JavadocLexer extends InternalJavadocLexer implements Lexer{
    public void reportWarning(String message)
    {
       Object args[]  = { getFilename(), new Integer(getLine()), new Integer(getColumn()), message };
-      _logger.l7dlog(Level.WARN, "PARSER_ERROR", args, null);
+      _logger.warn(Loggers.fmt("PARSER_ERROR", args), null);
    }
 
     /**

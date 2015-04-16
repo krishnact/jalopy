@@ -4,8 +4,8 @@ package de.hunsicker.jalopy.language.antlr;
 
 import java.io.IOException;
 import java.io.StringReader;
-
 import java.io.Reader;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +21,9 @@ import de.hunsicker.jalopy.language.Recognizer;
 import de.hunsicker.jalopy.language.CompositeFactory.ExtendedTokenFactory;
 import de.hunsicker.jalopy.language.antlr.InternalJavaLexer;
 import de.hunsicker.jalopy.language.antlr.JavaTokenTypes;
+import de.hunsicker.jalopy.storage.Loggers;
 import de.hunsicker.util.StringHelper;
+
 import antlr.InputBuffer;
 import antlr.CharBuffer;
 import antlr.Token;
@@ -372,7 +374,7 @@ public class JavaLexer extends InternalJavaLexer implements Lexer
         if (this.inputState != null)
         {
             Object[] args = { getFilename(), new Integer(getLine()), new Integer(getColumn()), "JavaLexer: panic" };
-            _logger.l7dlog(Level.FATAL, "PARSER_ERROR", args, null);
+            _logger.fatal(Loggers.fmt("PARSER_ERROR", args), null);
         }
         else
         {
@@ -380,7 +382,7 @@ public class JavaLexer extends InternalJavaLexer implements Lexer
                 _logger = Logger.getLogger("de.hunsicker.jalopy.language.java");
 
             Object[] args = { "???", new Integer(0), new Integer(0), "JavaLexer: panic" };
-            _logger.l7dlog(Level.FATAL, "PARSER_ERROR", args, null);
+            _logger.fatal(Loggers.fmt("PARSER_ERROR", args), null);
         }
     }
 
@@ -389,7 +391,7 @@ public class JavaLexer extends InternalJavaLexer implements Lexer
         if (this.inputState != null)
         {
             Object[] args = { getFilename(), new Integer(getLine()), new Integer(getColumn()), message };
-            _logger.l7dlog(Level.FATAL, "PARSER_ERROR", args, null);
+            _logger.fatal(Loggers.fmt("PARSER_ERROR", args), null);
         }
         else
         {
@@ -397,7 +399,7 @@ public class JavaLexer extends InternalJavaLexer implements Lexer
                 _logger = Logger.getLogger("de.hunsicker.jalopy.language.java");
 
             Object[] args = { "???", new Integer(0), new Integer(0), message };
-            _logger.l7dlog(Level.FATAL, "PARSER_ERROR", args, null);
+            _logger.fatal(Loggers.fmt("PARSER_ERROR", args), null);
         }
    }
 
@@ -409,7 +411,7 @@ public class JavaLexer extends InternalJavaLexer implements Lexer
    public void reportError(RecognitionException ex)
    {
       Object[] args = { getFilename(), new Integer(getLine()),new Integer(getColumn()), ex.getMessage() };
-      _logger.l7dlog(Level.ERROR, "PARSER_ERROR", args, ex);
+      _logger.error(Loggers.fmt("PARSER_ERROR", args), ex);
    }
 
    /**
@@ -420,7 +422,7 @@ public class JavaLexer extends InternalJavaLexer implements Lexer
    public void reportError(String message)
    {
        Object[] args = { getFilename(), new Integer(getLine()), new Integer(getColumn()), message };
-       _logger.l7dlog(Level.ERROR, "PARSER_ERROR", args, null);
+       _logger.error(Loggers.fmt("PARSER_ERROR", args), null);
    }
 
    /**
@@ -431,7 +433,7 @@ public class JavaLexer extends InternalJavaLexer implements Lexer
    public void reportWarning(String message)
    {
        Object[] args = { getFilename(), new Integer(getLine()),new Integer(getColumn()), message };
-       _logger.l7dlog(Level.WARN, "PARSER_ERROR", args, null);
+       _logger.warn(Loggers.fmt("PARSER_ERROR", args), null);
    }
 
     /**

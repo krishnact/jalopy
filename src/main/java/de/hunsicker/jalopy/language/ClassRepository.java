@@ -568,7 +568,7 @@ public class ClassRepository
             catch (ClassNotFoundException ex)
             {
                 Object[] args = { path, location };
-                Loggers.IO.l7dlog(Level.WARN, "REPOSITORY_NOT_PACKAGE_ROOT", args, null);
+                Loggers.IO.warn(Loggers.fmt("REPOSITORY_NOT_PACKAGE_ROOT", args), null);
 
                 return false;
             }
@@ -824,8 +824,8 @@ public class ClassRepository
                     if (!files[i].delete())
                     {
                         Object[] args = { files[i] };
-                        Loggers.IO.l7dlog(
-                            Level.INFO, "IMPORT_DELETE_UNUSED_ERR", args, null);
+                        Loggers.IO.info(
+                        	Loggers.fmt("IMPORT_DELETE_UNUSED_ERR", args), null);
                     }
                 }
             }

@@ -18,8 +18,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
+
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -42,6 +44,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+
 
 
 //J- needed only as a workaround for a Javadoc bug
@@ -208,8 +212,8 @@ public final class Convention
                 catch (IOException ex)
                 {
                     Object[] args = { location };
-                    Loggers.IO.l7dlog(
-                        Level.WARN, "PREF_COULD_NOT_CONNECT" /* NOI18N */, args, null);
+                    Loggers.IO.warn(
+                    	Loggers.fmt("PREF_COULD_NOT_CONNECT" /* NOI18N */, args), null);
                 }
             }
             else
@@ -222,7 +226,7 @@ public final class Convention
             ex.printStackTrace();
 
             Object[] args = { settingsFile };
-            Loggers.IO.l7dlog(Level.WARN, "PREF_ERROR_LOADING" /* NOI18N */, args, ex);
+            Loggers.IO.warn(Loggers.fmt("PREF_ERROR_LOADING" /* NOI18N */, args), ex);
 
             // actually means the build-in defaults will be used
             INSTANCE = EMPTY_PREFERENCES;

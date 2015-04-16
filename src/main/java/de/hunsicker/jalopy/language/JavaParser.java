@@ -19,6 +19,7 @@ import org.apache.log4j.Logger;
 import de.hunsicker.jalopy.language.antlr.InternalJavaParser;
 import de.hunsicker.jalopy.language.antlr.JavaNode;
 import de.hunsicker.jalopy.language.antlr.JavaTokenTypes;
+import de.hunsicker.jalopy.storage.Loggers;
 
 /** Java 1.5 Recognizer
  *
@@ -352,7 +353,7 @@ public AST getParseTree()
 public void reportError(RecognitionException ex)
 {
   Object[] args = { getFilename(), new Integer(ex.line), new Integer(ex.column), ex.getMessage() };
-  _logger.l7dlog(Level.ERROR, "PARSER_ERROR", args, ex);
+  _logger.error(Loggers.fmt("PARSER_ERROR", args), ex);
 }
 
 private final static Integer UNKNOWN_POSITION = new Integer(0);
@@ -364,7 +365,7 @@ private final static Integer UNKNOWN_POSITION = new Integer(0);
 public void reportError(String message)
 {
   Object[] args = { getFilename(), UNKNOWN_POSITION, UNKNOWN_POSITION, message };
-  _logger.l7dlog(Level.ERROR, "PARSER_ERROR", args, null);
+  _logger.error(Loggers.fmt("PARSER_ERROR", args), null);
 }
 
 /**
@@ -374,7 +375,7 @@ public void reportError(String message)
 public void reportWarning(String message)
 {
   Object[] args = { getFilename(), UNKNOWN_POSITION,UNKNOWN_POSITION, message };
-  _logger.l7dlog(Level.WARN, "PARSER_ERROR", args, null);
+  _logger.warn(Loggers.fmt("PARSER_ERROR", args), null);
 }
 
 /**
