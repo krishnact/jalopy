@@ -3,13 +3,13 @@
 
     <!-- Project information -->
     <name>Jalopy</name>
-    <groupId>com.lukespragg</groupId>
+    <groupId>com.github.rotty3000</groupId>
     <artifactId>jalopy</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>3000.0.0</version>
     <packaging>jar</packaging>
     <inceptionYear>2001</inceptionYear>
-    <url>https://github.com/lukespragg/jalopy</url>
-    <description>A source code formatter/beautifier/pretty printer for the Java programming language. It is aimed to provide a full-featured, yet free alternative to the well-known Jindent. Plug-ins for Ant, Eclipse, IDEA, JBuilder, JDeveloper, jEdit, NetBeans.</description>
+    <url>https://github.com/rotty3000/jalopy</url>
+    <description>A source code formatter/beautifier/pretty printer for the Java programming language.</description>
 
     <!-- Parent information -->
     <parent>
@@ -38,29 +38,23 @@
     <!-- Project developers -->
     <developers>
         <developer>
-            <id>Wulfspider</id>
-            <name>Luke Spragg</name>
-            <email>the@wulf.im</email>
+            <id>rotty3000</id>
+            <name>Raymond Augé</name>
+            <email>rotty3000@gmail.com</email>
         </developer>
     </developers>
 
     <!-- Source code access -->
     <scm>
-        <connection>scm:git:git://github.com/lukespragg/jalopy.git</connection>
-        <developerConnection>scm:git:git@github.com:lukespragg/jalopy.git</developerConnection>
-        <url>https://github.com/lukespragg/jalopy</url>
+        <connection>scm:git:git://github.com/rotty3000/jalopy.git</connection>
+        <developerConnection>scm:git:git@github.com:rotty3000/jalopy.git</developerConnection>
+        <url>https://github.com/rotty3000/jalopy</url>
     </scm>
-
-    <!-- Continuous integration -->
-    <ciManagement>
-        <system>travis</system>
-        <url>https://travis-ci.org/lukespragg/jalopy</url>
-    </ciManagement>
 
     <!-- Issue management -->
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/lukespragg/jalopy/issues</url>
+        <url>https://github.com/rotty3000/jalopy/issues</url>
     </issueManagement>
 
     <!-- Dependency repositories -->
