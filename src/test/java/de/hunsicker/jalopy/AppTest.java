@@ -1,5 +1,7 @@
 package de.hunsicker.jalopy;
 
+import de.hunsicker.jalopy.storage.Loggers;
+
 import java.net.URL;
 
 import junit.framework.Test;
@@ -45,6 +47,18 @@ public class AppTest
         assertNotNull(url);
 
         Jalopy.setConvention(url);
+    }
+
+    public void testLogFormatting() throws Exception
+    {
+        Object[] args = {
+            "FileName", new Integer(23), new Integer(38),
+            "JavadocLexer: panic"
+        };
+
+        String string = Loggers.fmt("PARSER_ERROR", args);
+
+        assertEquals("FileName:23:38: JavadocLexer: panic", string);
     }
 
 }
