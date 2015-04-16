@@ -18,6 +18,8 @@ import java.util.ResourceBundle;
 
 import de.hunsicker.util.ResourceBundleFactory;
 
+import java.text.MessageFormat;
+
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -57,6 +59,12 @@ public final class Loggers
     /** Logging category for transformation messages. */
     public static final Logger TRANSFORM =
         Logger.getLogger("de.hunsicker.jalopy.transform");
-    private static Map _config;
+
+    private static final ResourceBundle resourceBundle =
+        ResourceBundleFactory.getBundle("de.hunsicker.jalopy.storage.Bundle");
+
+    public static String fmt(String key, Object... args) {
+        return MessageFormat.format(resourceBundle.getString(key), args);
+    }
 
 }
