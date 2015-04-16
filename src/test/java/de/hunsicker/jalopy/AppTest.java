@@ -1,6 +1,4 @@
-package jalopy2.jalopy2;
-
-import de.hunsicker.jalopy.Jalopy;
+package de.hunsicker.jalopy;
 
 import java.net.URL;
 
