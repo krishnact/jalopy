@@ -33,6 +33,7 @@ import java.util.StringTokenizer;
 import de.hunsicker.io.Copy;
 import de.hunsicker.io.ExtensionFilter;
 import de.hunsicker.io.IoHelper;
+import de.hunsicker.jalopy.JalopyMode;
 import de.hunsicker.jalopy.language.DeclarationType;
 import de.hunsicker.jalopy.language.ModifierType;
 import de.hunsicker.util.ChainingRuntimeException;
@@ -184,7 +185,7 @@ public final class Convention
             settingsFile = getSettingsFile();
 
             // first load the system code convention file
-            if (settingsFile.exists())
+            if (JalopyMode.OPERATING_MODE ==1 && settingsFile.exists())
             {
                 in = new FileInputStream(settingsFile);
                 INSTANCE = readFromStream(in);
@@ -246,7 +247,7 @@ public final class Convention
             }
         }
 
-        if (project.getName().equals(DEFAULT_PROJECT.getName()))
+        if (project.getName().equals(DEFAULT_PROJECT.getName()) && JalopyMode.OPERATING_MODE ==1 )
         {
             // update to our new
             if (

@@ -29,6 +29,8 @@ import java.util.jar.JarFile;
 import de.hunsicker.io.DirectoryScanner;
 import de.hunsicker.io.ExtensionFilter;
 import de.hunsicker.io.IoHelper;
+import de.hunsicker.jalopy.Jalopy;
+import de.hunsicker.jalopy.JalopyMode;
 import de.hunsicker.jalopy.storage.Convention;
 import de.hunsicker.jalopy.storage.ConventionKeys;
 import de.hunsicker.jalopy.storage.Loggers;
@@ -98,8 +100,10 @@ public class ClassRepository
         _settings = Convention.getInstance();
 
         File directory = getWorkingDir();
+        if (JalopyMode.OPERATING_MODE==0){
 
-        if (!directory.exists())
+        }
+        else if ( !directory.exists())
         {
             if (!directory.mkdirs())
             {
@@ -111,6 +115,7 @@ public class ClassRepository
         {
             preload();
         }
+        
     }
 
     //~ Methods --------------------------------------------------------------------------

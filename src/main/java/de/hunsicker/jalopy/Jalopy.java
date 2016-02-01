@@ -795,20 +795,20 @@ public final class Jalopy
      *         <code><em>path</em> == null</code>
      */
     public void setInput(
-        String input,
-        String path)
+        String input//,String path
+        )
     {
         if (input == null)
         {
             throw new NullPointerException();
         }
 
-        if (path == null)
-        {
-            throw new NullPointerException();
-        }
+//        if (path == null)
+//        {
+//            throw new NullPointerException();
+//        }
 
-        _inputFile = new File(path);
+        _inputFile = new File("Dummy.class");
         _inputFileChecksum = null;
         _inputString = input;
         _inputReader = new BufferedReader(new StringReader(input));
@@ -2125,7 +2125,9 @@ public final class Jalopy
      */
     private void initConventionDefaults()
     {
+    	if (JalopyMode.OPERATING_MODE==1)
         _backupDir = Convention.getBackupDirectory();
+    		
         _backupLevel = ConventionDefaults.BACKUP_LEVEL;
         _holdBackup = false;
         _state = State.UNDEFINED;
@@ -2520,6 +2522,21 @@ public final class Jalopy
         {
             return this.name;
         }
+    }
+    
+    public static String format(String srcContents)
+    {
+    	 Jalopy jalopy = new Jalopy();
+		 jalopy.setInput(srcContents);
+		 
+		 StringBuffer strBuff = new StringBuffer(); 
+		 jalopy.setOutput(strBuff);
+
+		 // format and overwrite the given input file
+		 jalopy.format();
+		 
+		 return strBuff.toString();
+
     }
 }
 
