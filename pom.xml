@@ -4,7 +4,7 @@
     <name>Jalopy</name>
     <groupId>com.github.krishnact</groupId>
     <artifactId>jalopy</artifactId>
-    <version>3000.0.1-SNAPSHOT</version>
+    <version>20170525-SNAPSHOT</version>
     <packaging>jar</packaging>
     <inceptionYear>2001</inceptionYear>
     <url>https://github.com/rotty3000/jalopy</url>
