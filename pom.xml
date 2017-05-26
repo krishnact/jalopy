@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <!-- Project information -->
     <name>Jalopy</name>
-    <groupId>com.github.rotty3000</groupId>
+    <groupId>com.github.krishnact</groupId>
     <artifactId>jalopy</artifactId>
     <version>3000.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
